@@ -1224,10 +1224,13 @@ void CallbackReturn_Tx::callback(
       }
       else
       {
-         auto& cachedTx = cache_->getTx(txHash_.getRef());
-         cachedTx.setTxHeight(msg.height());
-         cachedTx.setTxIndex(msg.txindex());
-         tx = cachedTx;
+         try {
+            auto& cachedTx = cache_->getTx(txHash_.getRef());
+            cachedTx.setTxHeight(msg.height());
+            cachedTx.setTxIndex(msg.txindex());
+            tx = cachedTx;
+         } catch (NoMatch) {
+         }
       }
       
       ReturnMessage<Tx> rm(move(tx));
