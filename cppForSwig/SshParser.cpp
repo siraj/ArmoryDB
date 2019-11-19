@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+/F///////////////////////////////////////////////////////////////////////////////
 //                                                                            //
 //  Copyright (C) 2016-17, goatpig.                                           //
 //  Distributed under the MIT license                                         //
@@ -193,7 +193,7 @@ void ShardedSshParser::updateSsh()
    unsigned count = threadCount_;
    if (threadCount_ > 1)
       --count;
-   for (unsigned i = 1; i < count; i++)
+   for (unsigned i = 0; i < count; i++)
       threads.push_back(thread(ssh_lambda));
 
    putSSH();
